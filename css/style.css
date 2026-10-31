@@ -1,0 +1,403 @@
+/*1. Вебшрифти (@font-face)*/
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter-bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+
+*, *::before, *::after 
+{
+    box-sizing: border-box;
+}
+
+/* Змінні (:root): палітра HSL Hue, Saturation, Lightness та типографіка */
+:root {
+    --color-primary: hsl(219 53% 26%);       /* 1. Основний колір */
+    --color-primary-soft: hsl(219 53% 92%);  /* 2. Світлий відтінок (фон карток) */
+    --color-primary-dark: hsl(219 53% 18%);  /* 3. Темний (для :hover) */
+    --color-text: hsl(0 0% 10%);             /* 4. Основний текст */
+    --color-muted: hsl(0 0% 40%);            /* 5. Другорядний текст */
+    --color-surface: hsl(0 0% 100%);         /* 6. Тло поверхні */
+    --color-accent: hsl(4 74% 42%);          /* 7. Акцент (посилання, зірочки) */
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+
+}
+
+.container {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: var(--space-md);
+}
+/* Базові стилі (body, посилання, формати) */
+body {
+    font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+}
+
+
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+main a {
+    color: var(--color-accent);
+    text-decoration: underline; /* Дублювання кольору для доступності */
+    flex: 1;
+}
+
+main a:hover {
+    color: var(--color-primary-dark);
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Форми та обов'язкові поля */
+input[required] {
+    border-left: 3px solid var(--color-accent);
+}
+
+.field--required label::after {
+    content: " *";
+    color: var(--color-accent);
+}
+
+/*  Типографіка (заголовки, .content, .label) */
+h1 {
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem); /* Мінімум, бажане, максимум[cite: 8] */
+}
+h2 { font-size: 1.953rem; line-height: 1.2; }
+h3 { font-size: 1.563rem; line-height: 1.25; }
+h4 { font-size: 1.25rem; line-height: 1.3; }
+
+h1, h2, h3, h4 {
+    color: var(--color-primary);
+}
+
+h2 + p { margin-top: 0; }
+h2 ~ p { color: var(--color-muted); }
+
+.container {
+    width: min(100% - 2 * var(--space-md), 1100px);
+    margin-inline: auto;
+}
+
+.label {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+}
+
+/* Списки та проблема накопичення em/rem */
+nav ul > li { display: inline-block; }
+
+.classification-list,
+.classification-list ul {
+    font-size: 0.9rem; /* Переведено з em на rem для уникнення пастки накопичення */
+}
+
+/* Цитати */
+.quote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--color-muted);
+}
+
+code {
+    background: var(--color-primary-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Fira Code", Consolas, "Courier New", monospace;
+}
+
+/* Таблиці */
+tbody tr:nth-child(even) {
+    background: var(--color-primary-soft);
+}
+
+.card {
+    position: relative;
+    background: var(--color-primary-soft);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--space-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    display: flex;
+    flex-direction: column;
+    
+    flex: 1 1 280px; 
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card .btn {
+    margin-top: auto; 
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.card .btn:hover {
+    background: var(--color-primary-dark);
+}
+
+.card--accent {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #ffffff;
+}
+
+.hero {
+    background: 
+        linear-gradient(rgba(31, 56, 100, 0.8), rgba(31, 56, 100, 0.8)),
+        url("../img/photo-1.jpg") center / cover no-repeat;
+    color: #ffffff;
+    padding: 30px 20px; 
+}
+
+.hero nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.hero nav a:hover {
+    text-decoration: underline;
+    color: var(--color-primary-soft);
+}
+
+
+.back-to-top {
+    position: fixed;
+    right: var(--space-md);
+    bottom: var(--space-md);
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+.badge {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    background: var(--color-accent);
+    color: #fff;
+    padding: 2px var(--space-xs);
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*додаткове лаб7*/
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs) var(--space-sm);
+    line-height: 1;
+}
+
+
+.media {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start; 
+}
+
+.media_icon {
+    flex-shrink: 0;
+}
+
+.media_body {
+    margin: 0;
+}
+
+
+/*lab8*/
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: var(--space-sm);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Тіло завширшки щонайменше на всю висоту вікна */
+}
+
+.menu {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__contacts {
+    margin-left: auto;
+}
+
+/* .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+} */
+
+/*додаткові лаб8*/
+.card-grid .card:nth-child(2) {
+    align-self: center;
+}
+
+
+.card {
+    min-width: 0;  
+    overflow-wrap: anywhere; 
+}
+
+/*lab9*/
+
+/*mobile version*/
+.page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+    gap: var(--space-3);
+    min-height: 100vh;
+}
+
+.page_header { grid-area: header; }
+.page_sidebar { grid-area: sidebar; }
+.page_main { grid-area: main; }
+.page_footer { grid-area: footer; }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-3);
+}
+
+/*desktop version*/
+@media (min-width: 768px) {
+    .page {
+        grid-template-columns: 240px 1fr;
+        grid-template-areas: 
+            "header header"
+            "sidebar main"
+            "footer footer";
+    }
+}
+
+/*bigger desktop version*/
+@media (min-width: 1200px) {
+    .page {
+        grid-template-columns: 280px 1fr;
+    }
+}
+
+p, li, td {
+    overflow-wrap: anywhere;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+/*додаткові лаб9*/
+.card-grid .card:first-child {
+    grid-column: span 2; 
+    grid-row: span 2; 
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-flow: dense;
+    gap: var(--space-lg);
+}

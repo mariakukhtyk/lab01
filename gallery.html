@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Медіагалерея навчального сайту: ілюстрації до теми проєктування інтерфейсів з описами та зазначенням авторів.">
+    <meta name="author" content="Кухтик Марія">
+    <title>Медіагалерея — проєктування інтерфейсів</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* мінімум, щоб зображення з width/height не виходили за межі екрана */
+        img, video, iframe, svg { max-width: 100%; height: auto; }
+        figure { margin: 1.5rem 0; }
+        .portrait img { max-width: 360px; }
+        iframe { height: 400px; border: 1px solid #999; }
+        .diagram { max-width: 720px; }
+    </style>
+</head>
+<body>
+
+    <a href="#main">Перейти до основного вмісту</a>
+
+    <header id="top">
+        <nav aria-label="Головне меню">
+  <ul>
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="about.html">Про напрям</a></li>
+    <li><a href="comparison.html">Порівняння технологій</a></li>
+    <li><a href="gallery.html">Галерея</a></li>
+    <li><a href="pages/resources.html">Ресурси</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+    <li><a href="application.html">Заявка</a></li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="container">
+        <h1>Медіагалерея</h1>
+
+        <h2>Ілюстрації до теми</h2>
+
+        
+        <figure>
+            <picture>
+                <source srcset="img/photo-1.webp" type="image/webp">
+                <img src="img/photo-1.jpg"
+                     alt="Робоче місце дизайнера: чоловік у навушниках сидить за столом перед вигнутим монітором, на якому відкрито макет сайту з кольоровою палітрою"
+                     width="1200" height="735">
+            </picture>
+            <figcaption>Автор: <a href="https://unsplash.com/photos/man-in-black-shirt-sitting-in-front-of-computer-pHPzdEHN6Os">Faizur Rehman</a>, Unsplash License</figcaption>
+        </figure>
+
+        
+        <figure>
+            <picture>
+                <source media="(max-width: 600px)" srcset="img/photo-2-crop.webp" type="image/webp">
+                <source media="(max-width: 600px)" srcset="img/photo-2-crop.jpg" type="image/jpeg">
+                <source srcset="img/photo-2.webp" type="image/webp">
+                <img src="img/photo-2.jpg" alt="" width="1166" height="701" loading="lazy">
+            </picture>
+            <figcaption>Автор: <a href="https://unsplash.com/photos/yapBRdPWxik">Faizur Rehman</a>, Unsplash License</figcaption>
+
+        
+        <figure class="portrait">
+            <img src="img/photo-3.jpg"
+                 alt="Олівцевий ескіз мобільного застосунку на аркуші: чотири екрани смартфона з примітками, поруч лежить олівець"
+                 width="1200" height="2133" loading="lazy">
+            <figcaption>Автор: <a href="https://unsplash.com/photos/QY39YPpkxaI">Glen Carrie</a>, Unsplash License</figcaption>
+        </figure>
+
+        
+        <figure>
+            <img src="img/photo-4.jpg"
+                 alt="Рука малює маркером схему користувацького сценарію в блокноті; на рожевому стікері підпис «User flow: social log in, enable location»"
+                 width="1200" height="800" loading="lazy">
+            <figcaption>Автор: <a href="https://unsplash.com/photos/ml1IgjV8OvY">Kelly Sikkema</a>, Unsplash License</figcaption>
+        </figure>
+
+       
+        <figure>
+            <a href="pages/resources.html">
+                <img src="img/photo-5.jpg"
+                     alt="Перейти на сторінку «Ресурси» з корисними матеріалами про кольори та інтерфейси"
+                     width="1200" height="909" loading="lazy">
+            </a>
+            <figcaption>Автор: <a href="https://unsplash.com/photos/fxv5qihaqGE">Mika Baumeister</a>, Unsplash License.</figcaption>
+        </figure>
+
+        
+        <figure>
+            <img src="img/photo-6.jpg"
+                 alt="Панель колірної корекції у відеоредакторі з написами «Comparison View», «Midtones», «Shadows» і «Highlights»"
+                 width="1200" height="800" loading="lazy">
+            <figcaption>Автор: <a href="https://unsplash.com/photos/Q2-OEzSZY94">Peter Stumpf</a>, Unsplash License</figcaption>
+        </figure>
+
+        <h2>Векторна графіка</h2>
+        <img src="img/icon.svg" alt="Піктограма коду" width="64" height="64">
+
+        
+        <h3>Етапи проєктування інтерфейсу</h3>
+        <svg class="diagram" viewBox="0 0 720 180" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="diagram-title">Етапи проєктування інтерфейсу</title>
+            <desc id="diagram-desc">Діаграма з чотирьох послідовних етапів, з'єднаних лініями зі стрілками: дослідження, прототип, тестування, реалізація.</desc>
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                    <path d="M0 0 L10 5 L0 10 z" fill="#1f3864"/>
+                </marker>
+            </defs>
+
+            <rect x="10"  y="55" width="140" height="70" rx="6" fill="#dbe5f5" stroke="#1f3864" stroke-width="2"/>
+            <rect x="200" y="55" width="140" height="70" rx="6" fill="#dbe5f5" stroke="#1f3864" stroke-width="2"/>
+            <rect x="390" y="55" width="140" height="70" rx="6" fill="#dbe5f5" stroke="#1f3864" stroke-width="2"/>
+            <rect x="580" y="55" width="130" height="70" rx="6" fill="#dbe5f5" stroke="#1f3864" stroke-width="2"/>
+
+            <line x1="150" y1="90" x2="198" y2="90" stroke="#1f3864" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="340" y1="90" x2="388" y2="90" stroke="#1f3864" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="530" y1="90" x2="578" y2="90" stroke="#1f3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <text x="80"  y="95" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1f3864">Дослідження</text>
+            <text x="270" y="95" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1f3864">Прототип</text>
+            <text x="460" y="95" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1f3864">Тестування</text>
+            <text x="645" y="95" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1f3864">Реалізація</text>
+        </svg>
+
+        <h2>Відео</h2>
+        <video controls width="640" preload="metadata">
+            <source src="video/demo.mp4" type="video/mp4">
+            <track src="video/demo-uk.vtt" kind="subtitles" srclang="uk" label="Українські субтитри" default>
+            Ваш браузер не підтримує відтворення відео.
+            <a href="video/demo.mp4">Завантажити файл</a>
+        </video>
+
+        <h2>Розташування</h2>
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=30.7188892364502%2C46.43596408010131%2C30.76309204101563%2C46.45438665530431&amp;layer=mapnik"
+        width="600" height="400"
+        title="Карта розташування закладу освіти"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin"></iframe>
+    </main>
+
+    <footer>
+        <address>
+            Автор: Кухтик Марія, група 222<br>
+            Ел. пошта: <a href="mailto:student@example.com">student@example.com</a><br>
+            Телефон: <a href="tel:+38099578902">+38 099578902</a>
+        </address>
+        <p>&copy; 2026 Кухтик Марія</p>
+    </footer>
+<a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body>
+</html>

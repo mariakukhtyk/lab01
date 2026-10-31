@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Заявка на участь у навчальному проєкті">
+    <meta name="author" content="Кухтик Марія">
+    <title>Заявка на участь – Проєктування інтерфейсів</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main">Перейти до основного вмісту</a>
+
+    <header id="top" class="hero">
+        <nav aria-label="Головне меню">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про напрям</a></li>
+                <li><a href="comparison.html">Порівняння технологій</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="pages/resources.html">Ресурси</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+                <li><a href="application.html" aria-current="page">Заявка</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="container content">
+        <h1>Заявка на участь у проєкті</h1>
+
+        <form action="https://httpbin.org/post" method="post">
+            
+            <fieldset>
+                <legend>Відомості про учасника</legend>
+                
+                <p class="field--required">
+                    <label for="fullname">Прізвище та ім'я</label><br>
+                    <input type="text" id="fullname" name="fullname" minlength="5" maxlength="100" autocomplete="name" required>
+                </p>
+
+                <p class="field--required">
+                    <label for="email">Електронна пошта</label><br>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </p>
+
+                <p class="field--required">
+                    <label for="phone">Телефон</label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="+380XXXXXXXXX" pattern="\+380[0-9]{9}" title="Формат: +380671234567" autocomplete="tel" required>
+                </p>
+
+                <p class="field--required">
+                    <label for="course">Курс навчання</label><br>
+                    <input type="number" id="course" name="course" min="1" max="4" step="1" required>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Рівень підготовки</legend>
+                
+                <label><input type="radio" name="level" value="junior" checked> Початківець</label><br>
+                <label><input type="radio" name="level" value="middle"> Середній</label><br>
+                <label><input type="radio" name="level" value="senior"> Просунутий</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Параметри проєкту</legend>
+
+                <label for="startdate">Дата початку участі</label><br>
+                <input type="date" id="startdate" name="startdate"><br><br>
+
+                <label>Напрями інтересу:</label><br>
+                <label><input type="checkbox" name="interests" value="ux-research"> UX-дослідження та аналіз</label><br>
+                <label><input type="checkbox" name="interests" value="ui-design"> UI-дизайн та прототипування</label><br>
+                <label><input type="checkbox" name="interests" value="accessibility"> Доступність (Accessibility/WCAG)</label><br>
+                <label><input type="checkbox" name="interests" value="usability"> Тестування юзабіліті</label><br><br>
+
+                <label for="stack">Технологічний стек / Інструменти</label><br>
+                <select id="stack" name="stack">
+                    <optgroup label="Дизайн та прототипування">
+                        <option value="figma">Figma</option>
+                        <option value="miro">Miro</option>
+                    </optgroup>
+                    <optgroup label="Фронтенд">
+                        <option value="html-css">HTML5 & CSS3</option>
+                        <option value="js">JavaScript</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Додаткові дані</legend>
+
+                <label for="experience">Короткий опис досвіду</label><br>
+                <textarea id="experience" name="experience" rows="4" cols="40"></textarea><br><br>
+
+                <label for="portfolio">Файл із портфоліо (необов'язково)</label><br>
+                <input type="file" id="portfolio" name="portfolio">
+            </fieldset>
+
+            <fieldset>
+                <legend>Завантаження матеріалів</legend>
+                <label for="multi-files">Оберіть макети/зображення (PNG, JPG, PDF):</label><br>
+                <input type="file" id="multi-files" name="user_files[]" accept="image/png, image/jpeg, .pdf" multiple>
+            </fieldset>
+
+            <br>
+            <button type="submit">Надіслати заявку</button>
+            <button type="reset">Очистити форму</button>
+            <button type="button" id="preview-btn">Попередній перегляд</button>
+
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <address>
+            Автор: Кухтик Марія, група 222<br>
+            Ел. пошта: <a href="mailto:student@example.com">student@example.com</a><br>
+            Телефон: <a href="tel:+38099578902">+38 099578902</a>
+        </address>
+        <p>&copy; 2026 Кухтик Марія</p>
+    </footer>
+<a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Таблиця зображень (лабораторна робота 3)
+
+№ | Файл оригіналу | Джерело (посилання) | Автор | Ліцензія | Оригінал, КБ | photo-N.jpg, КБ | Стиснення jpg, % | photo-N.webp, КБ | Стиснення webp, %
+1 |faizur-rehman-pHPzdEHN6Os-unsplash.jpg| https://unsplash.com/photos/man-in-black-shirt-sitting-in-front-of-computer-pHPzdEHN6Os |Faizur Rehman| Unsplash License |  | 48.1  | 95 | 32.7  | 97
+2 |                |                     |       | Unsplash License |  | 71.7  | 96 | 48.4  | 97
+3 |                |                     |       | Unsplash License |  | 148   | 88 | 112   | 91
+4 |                |                     |       | Unsplash License |  | 82.3  | 97 | 66.6  | 98
+5 |                |                     |       | Unsplash License |  | 69.7  | 94 | 37.4  | 97
+6 |                |                     |       | Unsplash License |  | 46.1  | 99 | 28.7  | 99
+
+Разом (після оптимізації):
+  усі photo-N.jpg  = 465.9 КБ
+  усі photo-N.webp = 325.8 КБ
+  WebP менший за JPG приблизно на 30 % (325.8 / 465.9 = 0.70)

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Порівняльна таблиця інструментів для проєктування інтерфейсів: рік появи, тип, підтримка спільної роботи та типове застосування кожного інструменту.">
+    <meta name="author" content="Кухтик Марія">
+    <title>Порівняння технологій — інструменти проєктування UI/UX</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a href="#main">Перейти до основного вмісту</a>
+
+    <header id="top">
+        <nav aria-label="Головне меню">
+  <ul>
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="about.html">Про напрям</a></li>
+    <li><a href="comparison.html">Порівняння технологій</a></li>
+    <li><a href="gallery.html">Галерея</a></li>
+    <li><a href="pages/resources.html">Ресурси</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+    <li><a href="application.html">Заявка</a></li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="container">
+        <h1>Порівняння інструментів проєктування інтерфейсів</h1>
+
+        <p>Таблиця порівнює п'ять поширених інструментів, які використовують
+            на різних етапах роботи над інтерфейсом: від ескізу до готового
+            інтерактивного прототипу.</p>
+
+        <table>
+            <caption>Порівняння п'яти інструментів проєктування інтерфейсів</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Інструмент</th>
+                    <th scope="col">Рік появи</th>
+                    <th scope="col">Тип</th>
+                    <th scope="col">Спільна робота</th>
+                    <th scope="col">Типове застосування</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Figma</th>
+                    <td><time datetime="2016">2016</time></td>
+                    <td>Хмарний редактор</td>
+                    <td>так</td>
+                    <td>інтерфейси та прототипи</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adobe XD</th>
+                    <td><time datetime="2016">2016</time></td>
+                    <td>Настільний редактор</td>
+                    <td>так</td>
+                    <td>макети та прототипи</td>
+                </tr>
+                <tr>
+                    <th scope="row">Sketch</th>
+                    <td><time datetime="2010">2010</time></td>
+                    <td>Настільний редактор</td>
+                    <td>частково</td>
+                    <td>макети інтерфейсів</td>
+                </tr>
+                <tr>
+                    <th scope="row">InVision</th>
+                    <td><time datetime="2011">2011</time></td>
+                    <td>Хмарний сервіс</td>
+                    <td>так</td>
+                    <td>клікабельні прототипи</td>
+                </tr>
+                <tr>
+                    <th scope="row">Maze</th>
+                    <td><time datetime="2018">2018</time></td>
+                    <td>Хмарний сервіс</td>
+                    <td>так</td>
+                    <td>тестування юзабіліті</td>
+                </tr>
+            </tbody>
+                        <tfoot>
+                <tr>
+                    <td colspan="5">Усього розглянуто 5 інструментів проєктування інтерфейсів</td>
+                </tr>
+            </tfoot>
+        </table>
+                <h2>Можливості інструментів</h2>
+        <table>
+            <caption>Можливості інструментів проєктування інтерфейсів</caption>
+            <thead>
+                <tr>
+                    <th rowspan="2" scope="col">Інструмент</th> <!-- на 2 рядки вниз -->
+                    <th colspan="2" scope="colgroup">Можливості</th> <!-- на 2 стовпці -->
+                </tr>
+                <tr>
+                    <!-- перша комірка тут НЕ пишеться - її вже зайняв rowspan вище -->
+                    <th scope="col">Спільна робота</th>
+                    <th scope="col">Прототипування</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Figma</th>
+                    <td>так</td>
+                    <td>так</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adobe XD</th>
+                    <td>так</td>
+                    <td>так</td>
+                </tr>
+                <tr>
+                    <th scope="row">Sketch</th>
+                    <td>частково</td>
+                    <td>через плагіни</td>
+                </tr>
+            </tbody>
+        </table>
+                <h2>Розклад занять на тиждень</h2>
+        <table>
+            <caption>Розклад занять групи 222</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Час</th>
+                    <th scope="col">Понеділок</th>
+                    <th scope="col">Вівторок</th>
+                    <th scope="col">Середа</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">08:30–09:50</th>
+                    <td rowspan="2">Вебтехнології</td>
+                    <td>Алгоритми</td>
+                    <td rowspan="2">Бази даних</td>
+                </tr>
+                <tr>
+                    <th scope="row">10:00–11:20</th>
+                    <!-- Понеділок і середу вже зайняв rowspan -->
+                    <td>Англійська мова</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Велика перерва 11:20–11:50</td>
+                </tr>
+                <tr>
+                    <th scope="row">11:50–13:10</th>
+                    <td>Математика</td>
+                    <td rowspan="2">Програмування</td>
+                    <td>Програмування</td>
+                </tr>
+                <tr>
+                    <th scope="row">13:20–14:40</th>
+                    <td>Програмування</td>
+                    <!-- вівторок зайнятий rowspan -->
+                    <td>Алгоритми</td>
+                </tr>
+            </tbody>
+        </table>
+                <h2>Оцінка інструментів</h2>
+        <table>
+            <caption>Оцінка інструментів за двома групами критеріїв</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th id="use" colspan="2" scope="colgroup">Використання</th>
+                    <th id="cost" colspan="2" scope="colgroup">Вартість</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th id="ease" scope="col">Легкість</th>
+                    <th id="speed" scope="col">Швидкість</th>
+                    <th id="free" scope="col">Безкоштовна версія</th>
+                    <th id="paid" scope="col">Платна підписка</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="figma" scope="row">Figma</th>
+                    <td headers="figma use ease">висока</td>
+                    <td headers="figma use speed">висока</td>
+                    <td headers="figma cost free">є</td>
+                    <td headers="figma cost paid">від 12 $</td>
+                </tr>
+                <tr>
+                    <th id="sketch" scope="row">Sketch</th>
+                    <td headers="sketch use ease">середня</td>
+                    <td headers="sketch use speed">висока</td>
+                    <td headers="sketch cost free">пробний період</td>
+                    <td headers="sketch cost paid">від 10 $</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <address>
+            Автор: Кухтик Марія, група 222<br>
+            Ел. пошта: <a href="mailto:student@example.com">student@example.com</a><br>
+            Телефон: <a href="tel:+38099578902">+38 099578902</a>
+        </address>
+        <p>&copy; 2026 Кухтик Марія</p>
+    </footer>
+<a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body>
+</html>
