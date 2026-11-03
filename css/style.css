@@ -1,4 +1,6 @@
-/*1. Вебшрифти (@font-face)*/
+/* ==========================================
+   1. ВЕБШРИФТИ (@font-face)
+   ========================================== */
 @font-face {
     font-family: "Inter";
     src: url("../fonts/inter-regular.woff2") format("woff2");
@@ -13,55 +15,81 @@
     font-display: swap;
 }
 
-*, *::before, *::after 
-{
+/* ==========================================
+   2. СУЧАСНИЙ CSS RESET ТА СИСТЕМА ЗМІННИХ
+   ========================================== */
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Змінні (:root): палітра HSL Hue, Saturation, Lightness та типографіка */
 :root {
-    --color-primary: hsl(219 53% 26%);       /* 1. Основний колір */
-    --color-primary-soft: hsl(219 53% 92%);  /* 2. Світлий відтінок (фон карток) */
-    --color-primary-dark: hsl(219 53% 18%);  /* 3. Темний (для :hover) */
-    --color-text: hsl(0 0% 10%);             /* 4. Основний текст */
-    --color-muted: hsl(0 0% 40%);            /* 5. Другорядний текст */
-    --color-surface: hsl(0 0% 100%);         /* 6. Тло поверхні */
-    --color-accent: hsl(4 74% 42%);          /* 7. Акцент (посилання, зірочки) */
+    --color-primary: hsl(219 53% 26%);       /* Основний глибокий синій */
+    --color-primary-soft: hsl(219 53% 96%);  /* М'яке тло для блоків та карток */
+    --color-primary-dark: hsl(219 53% 18%);  /* Темний акцент для :hover */
+    --color-text: hsl(0 0% 12%);             /* Текст високої контрастності */
+    --color-muted: hsl(0 0% 40%);            /* Другорядний текст */
+    --color-surface: hsl(0 0% 100%);         /* Тло поверхні сайту */
+    --color-accent: hsl(4 74% 42%);          /* Яскравий акцент (кнопки, посилання) */
     
-
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 32px;
     --space-2xl: 48px;
-    --space-3xl: 64px; /* Додано для великих відступів секцій */
+    --space-3xl: 64px;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 2px 4px hsl(219 53% 26% / 0.06);
+    --shadow-md: 0 8px 20px hsl(219 53% 26% / 0.1);
 }
 
-.container {
-    max-width: 1100px;
-    margin-inline: auto;
-    padding-inline: var(--space-md);
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
 }
-/* Базові стилі (body, посилання, формати) */
+
+/* ==========================================
+   3. БАЗОВІ СТИЛІ СТОРІНКИ ТА КОНТЕЙНЕРИ
+   ========================================== */
 body {
-    font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
+.container {
+    width: min(100% - (2 * var(--space-md)), 1100px);
+    margin-inline: auto;
+}
 
 input, select, textarea, button {
     font-family: inherit;
     font-size: inherit;
 }
 
+p, li, td {
+    overflow-wrap: anywhere;
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+}
+
+/* Посилання та інтерактив */
 main a {
     color: var(--color-accent);
-    text-decoration: underline; /* Дублювання кольору для доступності */
-    flex: 1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
 }
 
 main a:hover {
@@ -70,20 +98,204 @@ main a:hover {
 
 nav a {
     text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
+    color: var(--color-accent);
     text-decoration: underline;
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
     outline: 3px solid var(--color-primary);
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
 
-/* Форми та обов'язкові поля */
-input[required] {
+/* ==========================================
+   4. ШАПКА (HEADER) — СТРОГА, БЕЗ ЗАОКРУГЛЕНЬ
+   ========================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid hsl(0 0% 90%);
+    border-radius: 0;
+}
+
+.menu {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu__contacts {
+    margin-left: auto;
+}
+
+nav ul > li { 
+    display: inline-block; 
+}
+
+/* ==========================================
+   5. СТИЛІЗАЦІЯ СПИСКІВ (UNORDERED & ORDERED)
+   ========================================== */
+ul, ol {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-xl);
+}
+
+li {
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+}
+
+/* Вкладені списки */
+ul ul, ol ol, ul ol, ol ul {
+    margin-top: var(--space-xs);
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   6. СТИЛІЗАЦІЯ КНОПОК ТА ІНТЕРАКТИВНИХ ЕЛЕМЕНТІВ
+   ========================================== */
+button, 
+input[type="submit"], 
+input[type="button"], 
+input[type="reset"],
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+}
+
+button:hover, 
+input[type="submit"]:hover, 
+input[type="button"]:hover, 
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    color: #ffffff;
+}
+
+button:active, 
+input[type="submit"]:active, 
+input[type="button"]:active, 
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Акцентна кнопка */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: hsl(4 74% 32%);
+}
+
+/* Кнопка всередині карток */
+.card .btn {
+    margin-top: auto; 
+    align-self: flex-start;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+}
+
+.card .btn:hover {
+    background: var(--color-primary-dark);
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs) var(--space-sm);
+    line-height: 1;
+}
+
+/* ==========================================
+   7. СТИЛІЗАЦІЯ ФОРМ ТА ПОЛІВ ВВОДУ
+   ========================================== */
+fieldset {
+    border: 1px solid hsl(0 0% 85%);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    background: var(--color-surface);
+}
+
+legend {
+    font-weight: 700;
+    color: var(--color-primary);
+    padding-inline: var(--space-xs);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+    color: var(--color-text);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid hsl(0 0% 80%);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: var(--space-md);
+}
+
+input:hover, select:hover, textarea:hover {
+    border-color: var(--color-primary);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
+    outline: none;
+}
+
+/* Обов'язкові поля */
+input[required], select[required], textarea[required] {
     border-left: 3px solid var(--color-accent);
 }
 
@@ -92,121 +304,21 @@ input[required] {
     color: var(--color-accent);
 }
 
-/*  Типографіка (заголовки, .content, .label) */
-h1 {
-    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem); /* Мінімум, бажане, максимум[cite: 8] */
-}
-h2 { 
-    font-size: 1.953rem; 
-    line-height: 1.2; 
-    margin-top: var(--space-2xl); /* Збільшено відступ зверху */
-    margin-bottom: var(--space-sm); /* Зменшено відступ знизу, щоб заголовок був ближче до тексту */
-}
-
-h3 { 
-    font-size: 1.563rem; 
-    line-height: 1.25; 
-    margin-top: var(--space-xl);
-    margin-bottom: var(--space-sm);
-}
-h4 { font-size: 1.25rem; line-height: 1.3; }
-
-h1, h2, h3, h4 {
-    color: var(--color-primary);
-}
-
-h2 + p { margin-top: 0; }
-h2 ~ p { color: var(--color-muted); }
-
-.container {
-    width: min(100% - 2 * var(--space-md), 1100px);
-    margin-inline: auto;
-}
-
-.label {
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.85rem;
-}
-
-/* Списки та проблема накопичення em/rem */
-nav ul > li { display: inline-block; }
-
-.classification-list,
-.classification-list ul {
-    font-size: 0.9rem; /* Переведено з em на rem для уникнення пастки накопичення */
-}
-
-/* Цитати */
-.quote {
-    border-left: 4px solid var(--color-primary);
-    padding-left: 1rem;
-    font-style: italic;
-    color: var(--color-muted);
-}
-
-code {
-    background: var(--color-primary-soft);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: "Fira Code", Consolas, "Courier New", monospace;
-}
-
-/* Таблиці */
-tbody tr:nth-child(even) {
-    background: var(--color-primary-soft);
-}
-
-.card {
-    position: relative;
-    background: var(--color-primary-soft);
-    padding: var(--space-md);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: var(--space-md);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    
-    display: flex;
-    flex-direction: column;
-    
-    flex: 1 1 280px; 
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.card .btn {
-    margin-top: auto; 
-    display: inline-block;
-    padding: var(--space-xs) var(--space-md);
-    background: var(--color-primary);
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.card .btn:hover {
-    background: var(--color-primary-dark);
-}
-
-.card--accent {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    color: #ffffff;
-}
-
+/* ==========================================
+   8. HERO-СЕКЦІЯ ТА БЛОКИ
+   ========================================== */
 .hero {
     background: 
-        linear-gradient(rgba(31, 56, 100, 0.8), rgba(31, 56, 100, 0.8)),
+        linear-gradient(rgba(31, 56, 100, 0.85), rgba(31, 56, 100, 0.85)),
         url("../img/photo-1.jpg") center / cover no-repeat;
     color: #ffffff;
-    padding: 30px 20px; 
+    padding: var(--space-3xl) var(--space-lg); 
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.hero h1 {
+    color: #ffffff;
 }
 
 .hero nav a {
@@ -219,30 +331,118 @@ tbody tr:nth-child(even) {
     color: var(--color-primary-soft);
 }
 
-
-.back-to-top {
-    position: fixed;
-    right: var(--space-md);
-    bottom: var(--space-md);
-    z-index: 20;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: var(--color-primary);
-    color: #fff;
-    border-radius: 50%;
-    text-decoration: none;
+section {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
 }
 
-p {
-    margin-top: 0;
+/* ==========================================
+   9. ТИПОГРАФІКА ТА ЕЛЕМЕНТИ
+   ========================================== */
+h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3rem);
+    line-height: 1.15;
     margin-bottom: var(--space-md);
 }
 
-html {
-    scroll-padding-top: 80px;
+h2 { 
+    font-size: 1.953rem; 
+    line-height: 1.25; 
+    margin-top: var(--space-2xl); 
+    margin-bottom: var(--space-sm); 
+}
+
+h3 { 
+    font-size: 1.563rem; 
+    line-height: 1.3; 
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+}
+
+h4 { 
+    font-size: 1.25rem; 
+    line-height: 1.4; 
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+h2 + p, h3 + p { 
+    margin-top: 0; 
+}
+
+.label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-muted);
+}
+
+.classification-list,
+.classification-list ul {
+    font-size: 0.9rem;
+    padding-left: var(--space-lg);
+}
+
+.quote {
+    border-left: 4px solid var(--color-primary);
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
+    margin-block: var(--space-md);
+    font-style: italic;
+    color: var(--color-muted);
+    background-color: var(--color-primary-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+code {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-family: "Fira Code", Consolas, monospace;
+    font-size: 0.9em;
+}
+
+/* ==========================================
+   10. КАРТКИ (.card) ТА КОМПОНЕНТИ
+   ========================================== */
+.card {
+    position: relative;
+    background: var(--color-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid hsl(0 0% 90%);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-md);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    display: flex;
+    flex-direction: column;
+    min-width: 0;  
+    overflow-wrap: anywhere; 
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-primary-soft);
+}
+
+.card--accent {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #ffffff;
+    border-left-color: var(--color-accent);
+}
+
+.card--accent h2, .card--accent h3, .card--accent h4 {
+    color: #ffffff;
 }
 
 .badge {
@@ -251,41 +451,13 @@ html {
     right: var(--space-xs);
     background: var(--color-accent);
     color: #fff;
-    padding: 2px var(--space-xs);
-    border-radius: 4px;
+    padding: 2px var(--space-sm);
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
+    font-weight: 700;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/*додаткове лаб7*/
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-.icon-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xs) var(--space-sm);
-    line-height: 1;
-}
-
-
+/* Media-об'єкти та таблиці */
 .media {
     display: flex;
     gap: var(--space-sm);
@@ -300,58 +472,29 @@ html {
     margin: 0;
 }
 
-
-/*lab8*/
-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--color-surface);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: var(--space-sm);
+.table-wrap {
+    overflow-x: auto;
+    margin-block: var(--space-md);
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Тіло завширшки щонайменше на всю висоту вікна */
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.menu {
-    display: flex;
-    gap: var(--space-md);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+th, td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid hsl(0 0% 90%);
 }
 
-.menu__contacts {
-    margin-left: auto;
+tbody tr:nth-child(even) {
+    background: var(--color-primary-soft);
 }
 
-/* .card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-lg);
-} */
-
-/*додаткові лаб8*/
-.card-grid .card:nth-child(2) {
-    align-self: center;
-}
-
-
-.card {
-    min-width: 0;  
-    overflow-wrap: anywhere; 
-}
-
-/*lab9*/
-
-/*mobile version*/
+/* ==========================================
+   11. СІТКИ (GRID) ТА АДАПТИВНІСТЬ
+   ========================================== */
 .page {
     display: grid;
     grid-template-columns: 1fr;
@@ -360,7 +503,7 @@ body {
         "main"
         "sidebar"
         "footer";
-    gap: var(--space-3);
+    gap: var(--space-lg);
     min-height: 100vh;
 }
 
@@ -372,10 +515,32 @@ body {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-3);
+    grid-auto-flow: dense;
+    gap: var(--space-lg);
 }
 
-/*desktop version*/
+.card-grid .card:first-child {
+    grid-column: span 2; 
+    grid-row: span 2; 
+}
+
+.card-grid .card:nth-child(2) {
+    align-self: center;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: var(--space-md);
+}
+
+.span-12 { grid-column: span 12; }
+.span-8  { grid-column: span 8; }
+.span-4  { grid-column: span 4; }
+
 @media (min-width: 768px) {
     .page {
         grid-template-columns: 240px 1fr;
@@ -386,56 +551,53 @@ body {
     }
 }
 
-/*bigger desktop version*/
 @media (min-width: 1200px) {
     .page {
         grid-template-columns: 280px 1fr;
     }
 }
 
-p, li, td {
-    overflow-wrap: anywhere;
-}
-
-.table-wrap {
-    overflow-x: auto;
-}
-
-/*додаткові лаб9*/
-.card-grid .card:first-child {
-    grid-column: span 2; 
-    grid-row: span 2; 
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-auto-flow: dense;
-    gap: var(--space-lg);
-}
-.page-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr); /* 12 рівних колонок */
-    gap: var(--space-lg);                    /* Жолоби між колонками */
-    max-width: 1100px;
-    margin-inline: auto;
-    padding-inline: var(--space-md);
-}
-
-.span-12 { grid-column: span 12; }
-.span-8  { grid-column: span 8; }
-.span-4  { grid-column: span 4; }
-
-section {
-    margin-top: var(--space-3xl);
-    margin-bottom: var(--space-3xl);
-}
-
-.btn-primary {
-    background: var(--color-accent);
+/* ==========================================
+   12. ДОДАТКОВІ ЕЛЕМЕНТИ ТА ДОСТУПНІСТЬ
+   ========================================== */
+.back-to-top {
+    position: fixed;
+    right: var(--space-md);
+    bottom: var(--space-md);
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
     color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: background-color 0.2s ease;
 }
 
-.btn-primary:hover {
-    background: hsl(4 74% 32%);
+.back-to-top:hover {
+    background: var(--color-primary-dark);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
 }
